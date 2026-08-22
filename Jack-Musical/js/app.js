@@ -157,6 +157,7 @@ const showMessage = (message) => {
     const messageElement = document.createElement('p')
     messageElement.textContent = message
     messageDisplay.append(messageElement)
+    messageDisplay.style.display = 'block'
     
     return new Promise((resolve, reject) => {
         setTimeout(() => {
