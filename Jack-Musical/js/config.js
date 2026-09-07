@@ -12,6 +12,9 @@ const songLookup = {
    'POPPIN':  'https://www.youtube.com/watch?v=w9uWPBDHEKE', 
    'TYLER':   'https://www.youtube.com/watch?v=np9Ub1LilKU',
    'LOVIN':   'https://www.youtube.com/watch?v=Iq8h3GEe22o',
+   'HELLO':   'https://www.youtube.com/watch?v=Q86_nlRoIGw&list=RDQ86_nlRoIGw&start_radio=1',
+   'TRADE':   'https://www.youtube.com/watch?v=o3y5f-IQeP0',
+   'PRAGUE':  'https://www.youtube.com/watch?v=lFf5SSqRd5Y',
 
 };
 
