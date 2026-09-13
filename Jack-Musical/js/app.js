@@ -1,7 +1,17 @@
 const tileDisplay = document.querySelector('.tile-container')
 const keyboard = document.querySelector('.key-container')
 const messageDisplay = document.querySelector('.message-container')
+const memory = getMemory();
 
+function getMemory() {
+    return JSON.parse(localStorage.getItem('words') || "[]");
+}
+
+function memoryAddWord(newWord) {
+    return localStorage.setItem('words', JSON.stringify([...getMemory(), newWord]));
+}
+
+const clearMemory = () => localStorage.setItem('words', JSON.stringify([]))
 
 /**Jack Harlow's Songs and video links for APP
  * 
@@ -49,7 +59,7 @@ console.log(
     names, randomIndex, wordle
 )
 
-let currentRow = 0
+let currentRow = memory.length
 let currentTile = 0
 let isGameOver = false
 
@@ -83,6 +93,14 @@ guessRows.forEach((guessRow, guessRowIndex) => {
     })
 
     tileDisplay.append(rowElement)
+})
+
+memory.forEach((word, wordIndex) => {
+    document.querySelector(`#guessRow-${wordIndex}`).classList.add('correct')
+
+    word.split('').forEach((letter, letterIndex) => {
+        document.querySelector(`#guessRow-${wordIndex}-tile-${letterIndex}`).innerHTML = letter;
+    })
 })
 
 //Key Button//
@@ -134,12 +152,20 @@ const addLetter = (letter) => {
 
 const checkErrors = () => {
     const wordle = getWordle()
-    const isInvalid = names.findIndex(name => name.includes(wordle)) < 0;
-    console.log({ wordle })
+    const isInvalid = wordle && (
+        names.findIndex(name => name.includes(wordle)) < 0 ||
+        getMemory().find(word => word.includes(wordle))
+    )
+    
     if (isInvalid) {
         highlight(currentRow, false)
     } else {
         unHighlight(currentRow)
+
+        document.querySelectorAll('.tile-container > div')[currentRow].querySelectorAll('div').forEach(tile => {
+            if (tile.innerHTML.trim() === '') return;
+            tile.classList.add('correct-letter');
+        });
     }
 }
 
@@ -156,6 +182,7 @@ const deleteLetter = () => {
     tile.textContent = ''
     guessRows[currentRow][currentTile] = ''
     tile.setAttribute('data', '')
+    tile.classList.remove('correct-letter')
 }
 
 const getWordle = () => guessRows[currentRow].join('').replace('_', '').trim();
@@ -174,14 +201,21 @@ const checkRow = () => {
     }
 
     if (songLookup[wordle]) {
+        if (getMemory().includes(wordle)) {
+            shake()
+            return
+        }
+
         setTimeout(() => {
             showMessage('Magnificent!').then(openVideo)
             isGameOver = true
         }, 1000)
         highlight(currentRow);
+        memoryAddWord(wordle)
     } else {
         showMessage('No match!')
         shake()
+        return
     }
 
     if (currentRow < 7) {

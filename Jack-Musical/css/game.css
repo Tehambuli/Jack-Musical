@@ -78,13 +78,14 @@ body {
 
 /* tile container 2 */
 
+/* Row */
 .tile-container > div {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 }
 
 .tile-container > div.correct div {
-    background: rgb(48, 179, 112);
+    background: rgb(3, 136, 105);
 }
 .tile-container > div.incorrect div {
     background: rgb(208, 82, 20);
@@ -104,15 +105,19 @@ body {
     color: #ffffff;
     text-shadow: 1px 1px rgb(2, 109, 84);
     margin: 2px;
+    transition: .3s background;
 }
 
 /* P tag container */
 
 .message-container {
-    display: none;
     height: 30px;
     margin-bottom: 50px;
     width: 50%;
+}
+
+.tile.correct-letter {
+    background: rgb(48, 179, 112);
 }
 
 .message-container p {
