@@ -11,6 +11,10 @@ function memoryAddWord(newWord) {
     return localStorage.setItem('words', JSON.stringify([...getMemory(), newWord]));
 }
 
+function hasMemory() {
+    return getMemory().length !== 0;
+}
+
 const clearMemory = () => localStorage.setItem('words', JSON.stringify([]))
 
 /**Jack Harlow's Songs and video links for APP
@@ -302,3 +306,24 @@ const flipTile = () => {
         }
     })
 }
+
+const closeIntro = () => {
+    document.querySelector('.intro-overlay').classList.add('hidden');
+}
+const showIntro = () => {
+    document.querySelector('.intro-overlay').classList.remove('hidden');
+}
+
+document.querySelector('.close').addEventListener('click', closeIntro)
+document.querySelector('.start-game').addEventListener('click', closeIntro)
+
+if (!hasMemory()) {
+    showIntro();
+}
+
+document.querySelector('.reset').addEventListener('click', () => {
+    if (!window.confirm('Do you want to restart the game?')) return;
+
+    clearMemory();
+    window.location.reload();
+})

@@ -15,18 +15,6 @@ body{
   	background-size:auto;
 }
 
-.intro{
-  	text-align: center;
-	position: fixed;
-}
-
-.instructions-container {
-	padding: 2em 5em;
-	color: #fff;
-	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
-	font-size: 1.25em;
-}
-
 a:link { text-decoration: none; }
 
 a:visited { text-decoration: none; }
@@ -49,22 +37,20 @@ a:active { text-decoration: none; }
 
 .button {
 	background: radial-gradient(circle, rgba(63,251,207,1) 0%, rgba(227,6,216,1) 100%);
-	border: 1px solid #36026A;
-	box-shadow: 1px 1px 5px rgba(220,3,200,1);
 	color: #36026A;
-	text-shadow: 1px 1px 1px #000;
+	text-shadow: 1px 1px 1px #fff;
+	font-weight: 600;
 	width: auto;
-	padding: 15px 32px;
+	padding: 15px 32px 17px;
 	text-align: center;
 	font-size: 26px;
 	margin: 10px 0 0;
 	cursor: pointer;
 	-webkit-transition-duration: 0.4s; /* Safari */
 	transition-duration: 0.4s;
-}
-  
-.button {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	border: none;
+	border-radius: 5px;
 }
 
 .header {
