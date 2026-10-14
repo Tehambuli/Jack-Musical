@@ -29,7 +29,7 @@ a:active { text-decoration: none; }
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	background: rgb(158, 135, 135);
+	background: rgb(0, 0, 0);
 	padding: 20px;
 	top: 50%;
 	display: none;
