@@ -89,7 +89,7 @@ a:active { text-decoration: none; }
 
 	.instructions {
 		padding: 20px;
-		background: rgba(0,0,0,0.7);
+		background: rgba(white);
 	}
 
 	.button {
